@@ -74,7 +74,7 @@ function App() {
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900">Promptyoo</h1>
             <p className="text-gray-600 mt-2">
-              I can generate and optimize prompts to include 6 elements 'RABPOC'
+            Want high-quality AI responses? I can help you optimize your prompts. Before asking AI a question, simply provide brief answers to these 6 sub-questions that help generate high-quality prompts. Then, I'll ask DeepSeek to generate an excellent prompt based on your answers. You can then copy this prompt to ask AI.
             </p>
           </div>
 
