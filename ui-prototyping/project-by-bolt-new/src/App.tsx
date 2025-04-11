@@ -11,14 +11,16 @@ interface PromptForm {
 }
 
 function App() {
-  const [optimizedPrompt, setOptimizedPrompt] = useState<string>('Your optimized prompt will be displayed here. Optimize your prompt now!');
+  const [optimizedPrompt, setOptimizedPrompt] = useState<string>(
+    'Your optimized prompt will be displayed here. Optimize your prompt now!'
+  );
   const [form, setForm] = useState<PromptForm>({
     role: 'Prompt Optimization Expert',
     audience: 'AI tool beginners',
     boundary: 'Prompt optimization',
     purpose: 'find popular prompt optimization tools',
     output: 'tool name (official website link)',
-    concern: 'AI hallucinations (if not found, please be honest and don\'t make up information)'
+    concern: "AI hallucinations (if not found, please be honest and don't make up information)",
   });
 
   const handleNewSession = () => {
@@ -28,7 +30,7 @@ function App() {
       boundary: '',
       purpose: '',
       output: '',
-      concern: ''
+      concern: '',
     });
     setOptimizedPrompt('Your optimized prompt will be displayed here. Optimize your prompt now!');
   };
@@ -74,7 +76,10 @@ function App() {
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900">Promptyoo</h1>
             <p className="text-gray-600 mt-2">
-            Want high-quality AI responses? I can help you optimize your prompts. Before asking AI a question, simply provide brief answers to these 6 sub-questions that help generate high-quality prompts. Then, I'll ask DeepSeek to generate an excellent prompt based on your answers. You can then copy this prompt to ask AI.
+              Want high-quality AI responses? I can help you optimize your prompts. Before asking AI
+              a question, simply provide brief answers to these 6 sub-questions that help generate
+              high-quality prompts. Then, I'll ask DeepSeek to generate an excellent prompt based on
+              your answers. You can then copy this prompt to ask AI.
             </p>
           </div>
 
@@ -83,17 +88,23 @@ function App() {
               {Object.entries(form).map(([key, value]) => (
                 <div key={key}>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    What {key.charAt(0).toUpperCase() + key.slice(1)} {key === 'role' ? 'you want AI to play?' : 
-                      key === 'audience' ? 'you want AI to generate content for?' :
-                      key === 'boundary' ? 'should AI focus on for this discussion?' :
-                      key === 'purpose' ? 'you want AI to help you achieve?' :
-                      key === 'output' ? 'format you want AI to generate?' :
-                      'you have about this discussion with AI?'}
+                    What {key.charAt(0).toUpperCase() + key.slice(1)}{' '}
+                    {key === 'role'
+                      ? 'you want AI to play?'
+                      : key === 'audience'
+                        ? 'you want AI to generate content for?'
+                        : key === 'boundary'
+                          ? 'should AI focus on for this discussion?'
+                          : key === 'purpose'
+                            ? 'you want AI to help you achieve?'
+                            : key === 'output'
+                              ? 'format you want AI to generate?'
+                              : 'you have about this discussion with AI?'}
                   </label>
                   <input
                     type="text"
                     value={value}
-                    onChange={(e) => setForm(prev => ({ ...prev, [key]: e.target.value }))}
+                    onChange={(e) => setForm((prev) => ({ ...prev, [key]: e.target.value }))}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder={`Enter ${key}...`}
                   />
