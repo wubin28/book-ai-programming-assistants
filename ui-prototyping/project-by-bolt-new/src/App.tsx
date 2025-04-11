@@ -14,6 +14,7 @@ function App() {
   const [optimizedPrompt, setOptimizedPrompt] = useState<string>(
     'Your optimized prompt will be displayed here. Optimize your prompt now!'
   );
+  const [promptTemplate, setPromptTemplate] = useState<string>('');
   const [form, setForm] = useState<PromptForm>({
     role: 'Prompt Optimization Expert',
     audience: 'AI tool beginners',
@@ -33,11 +34,26 @@ function App() {
       concern: '',
     });
     setOptimizedPrompt('Your optimized prompt will be displayed here. Optimize your prompt now!');
+    setPromptTemplate('');
   };
 
   const handleOptimize = () => {
-    const optimizedText = `As a ${form.role}, help me ${form.purpose}. The target audience is ${form.audience}. Focus on ${form.boundary}. Please provide the output in this format: ${form.output}. Note: ${form.concern}`;
-    setOptimizedPrompt(optimizedText);
+    const template = `As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
+
+**What Role you want AI to play? ${form.role}.**
+
+**What Audience you want AI to generate content for? ${form.audience}.** 
+
+**What Boundary should AI focus on for this discussion? ${form.boundary}.**
+
+**What Purpose you want AI to help you achieve? ${form.purpose}.** 
+
+**What Output format you want AI to generate? ${form.output}.**
+
+**What Concern you have about this discussion with AI? ${form.concern}.**`;
+
+    setPromptTemplate(template);
+    setOptimizedPrompt(template);
   };
 
   return (
