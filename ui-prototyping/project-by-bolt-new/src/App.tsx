@@ -40,17 +40,17 @@ function App() {
   const handleOptimize = () => {
     const template = `As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
 
-**What Role you want AI to play? ${form.role}.**
+**R: What Role you want AI to play? ${form.role}.**
 
-**What Audience you want AI to generate content for? ${form.audience}.** 
+**A: What Audience you want AI to generate content for? ${form.audience}.**
 
-**What Boundary should AI focus on for this discussion? ${form.boundary}.**
+**B: What Boundary should AI focus on for this discussion? ${form.boundary}.**
 
-**What Purpose you want AI to help you achieve? ${form.purpose}.** 
+**P: What Purpose you want AI to help you achieve? ${form.purpose}.**
 
-**What Output format you want AI to generate? ${form.output}.**
+**O: What Output format you want AI to generate? ${form.output}.**
 
-**What Concern you have about this discussion with AI? ${form.concern}.**`;
+**C: What Concern you have about this discussion with AI? ${form.concern}.**`;
 
     setPromptTemplate(template);
     setOptimizedPrompt(template);
@@ -104,18 +104,17 @@ function App() {
               {Object.entries(form).map(([key, value]) => (
                 <div key={key}>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    What {key.charAt(0).toUpperCase() + key.slice(1)}{' '}
                     {key === 'role'
-                      ? 'you want AI to play?'
+                      ? 'R: What Role you want AI to play?'
                       : key === 'audience'
-                        ? 'you want AI to generate content for?'
+                        ? 'A: What Audience you want AI to generate content for?'
                         : key === 'boundary'
-                          ? 'should AI focus on for this discussion?'
+                          ? 'B: What Boundary should AI focus on for this discussion?'
                           : key === 'purpose'
-                            ? 'you want AI to help you achieve?'
+                            ? 'P: What Purpose you want AI to help you achieve?'
                             : key === 'output'
-                              ? 'format you want AI to generate?'
-                              : 'you have about this discussion with AI?'}
+                              ? 'O: What Output format you want AI to generate?'
+                              : 'C: What Concern you have about this discussion with AI?'}
                   </label>
                   <input
                     type="text"
