@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PenLine, History } from 'lucide-react';
+import { PenLine, History, Loader2 } from 'lucide-react';
 
 interface PromptForm {
   role: string;
@@ -15,6 +15,8 @@ function App() {
     'Your optimized prompt will be displayed here. Optimize your prompt now!'
   );
   const [promptTemplate, setPromptTemplate] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState<PromptForm>({
     role: 'Prompt Optimization Expert',
     audience: 'AI tool beginners',
@@ -23,6 +25,9 @@ function App() {
     output: 'tool name (official website link)',
     concern: "AI hallucinations (if not found, please be honest and don't make up information)",
   });
+
+  // Backend API URL
+  const API_URL = 'http://localhost:3001/api/optimize-prompt';
 
   const handleNewSession = () => {
     setForm({
@@ -35,9 +40,11 @@ function App() {
     });
     setOptimizedPrompt('Your optimized prompt will be displayed here. Optimize your prompt now!');
     setPromptTemplate('');
+    setError(null);
   };
 
-  const handleOptimize = () => {
+  const handleOptimize = async () => {
+    // Create the template
     const template = `As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
 
 **R: What Role you want AI to play? ${form.role}.**
@@ -53,7 +60,50 @@ function App() {
 **C: What Concern you have about this discussion with AI? ${form.concern}.**`;
 
     setPromptTemplate(template);
-    setOptimizedPrompt(template);
+
+    // Clear the optimized prompt and set loading state
+    setOptimizedPrompt('Loading...');
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Set up a timeout for the API request
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('DeepSeek没有响应')), 30000); // 30 seconds timeout
+      });
+
+      // Make the API request
+      console.log('Sending request to:', API_URL);
+      const requestBody = { template };
+      console.log('Request body:', requestBody);
+
+      const fetchPromise = fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      // Race between the fetch and the timeout
+      const response = await Promise.race([fetchPromise, timeoutPromise]) as Response;
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API error response:', response.status, response.statusText, errorText);
+        throw new Error(`Error: ${response.status} ${response.statusText}\n${errorText}`);
+      }
+
+      const data = await response.json();
+      console.log('API success response:', data);
+      setOptimizedPrompt(data.optimizedPrompt);
+    } catch (err) {
+      console.error('Error optimizing prompt:', err);
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
+      setOptimizedPrompt('Error: ' + (err instanceof Error ? err.message : 'An unknown error occurred'));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -128,15 +178,36 @@ function App() {
 
               <button
                 onClick={handleOptimize}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-medium hover:bg-blue-700 transition-colors"
+                disabled={isLoading}
+                className={`w-full py-3 px-6 rounded-md font-medium transition-colors flex items-center justify-center ${isLoading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
               >
-                Optimize Prompt
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    Optimizing...
+                  </>
+                ) : (
+                  'Optimize Prompt'
+                )}
               </button>
             </div>
           </div>
 
           <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold mb-4">Optimized Prompt</h2>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-semibold">Optimized Prompt</h2>
+              {isLoading && (
+                <div className="flex items-center text-blue-600">
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  <span>Processing...</span>
+                </div>
+              )}
+            </div>
+            {error && (
+              <div className="bg-red-50 text-red-700 p-3 rounded-md mb-4 border border-red-200">
+                {error}
+              </div>
+            )}
             <div className="bg-gray-50 p-4 rounded-md">
               <p className="text-gray-700 whitespace-pre-wrap">{optimizedPrompt}</p>
             </div>
