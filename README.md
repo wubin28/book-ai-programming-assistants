@@ -57,3 +57,32 @@
 2. 使用bolt.new构建并存储用于提示词优化的提示词
     1. [prompt-build-prompt-for-optimization.md](bolt-cursor-augmentcode/prompts/prompt-build-prompt-for-optimization.md)
     2. dbf8169 - 2025-04-13 15:09:50 feat: generated the prompt for deepseek according to the default answers of the 6 questions - Bin Wu
+3. 使用AI（bolt.new）开发前端可调用的后端接口代码，用于将提示词通过后端传递给DeepSeek官方API进行优化
+    1. [prompt-discuss-deepseek-api-integration-in-English.md](bolt/prompts/prompt-discuss-deepseek-api-integration-in-English.md)
+    2. [prompt-discuss-deepseek-api-integration-in-Chinese.md](bolt/prompts/prompt-discuss-deepseek-api-integration-in-Chinese.md)
+    3. [prompt-discuss-api-key-security-in-bolt.md](bolt/prompts/prompt-discuss-api-key-security-in-bolt.md)
+    4. [prompt-add-backend.md](bolt/prompts/prompt-add-backend.md)
+    5. 1afd331 - 2025-04-13 17:56:27 feat: bolt: added backend for DeepSeek API integration and update frontend - Bin Wu
+8. 运行原型
+    1. 克隆代码到本地并进入代码根目录
+    ```
+    git clone https://github.com/wubin28/book-ai-programming-assistants.git
+    cd book-ai-programming-assistants/bolt
+    ```
+    2. 进入后端目录frontend/server，创建文件`.env`并提供DeepSeek官方API
+    ```
+    DEEPSEEK_API_KEY=sk-bxxx
+    ```
+    3. 在一个终端启动后端
+    ```shell
+    cd frontend/server
+    npm install express cors openai dotenv
+    node index.js
+    ```
+    4. 在另一个终端启动前端
+    ```shell
+    cd frontend
+    npm install
+    npm run dev
+    ```
+    5. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
