@@ -1,0 +1,1 @@
+你完成了访问deepseek api优化提示词的需求，很好。但当我准备把这次代码变更进行提交时，运行git status，发现竟然有2000个要提交的文件。我猜里面有很多无须提交到git版本库的文件。请你阅读文件git-st.txt，这个文件包括了我刚运行git add .后所有staged的文件。然后在book-ai-programming-assistants目录下为我编写一个.gitignore文件，以便过滤掉无须提交git版本库的文件。

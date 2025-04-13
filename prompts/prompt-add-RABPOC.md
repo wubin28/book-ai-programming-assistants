@@ -1,0 +1,1 @@
+请修改代码，使得web UI右侧6个输入框的标题前面依次加上一个字母，以体现RABPOC。比如把第一个输入框的标题“What Role you want AI to play?”改为“R: What Role you want AI to play?”，第2个标题前面加上“A: "，以此类推。

@@ -1,9 +1,5 @@
 # prompt 1
 
-请修改代码，使得web UI右侧6个输入框的标题前面依次加上一个字母，以体现RABPOC。比如把第一个输入框的标题“What Role you want AI to play?”改为“R: What Role you want AI to play?”，第2个标题前面加上“A: "，以此类推。
-
-# prompt 2
-
 在book-ai-programming-assistants/nodejs-backend目录下创建一个Node.js后端应用，允许book-ai-programming-assistants/ui-prototyping目录下的React前端应用调用该后端，并通过后端向DeepSeek官方API发送请求。调用DeepSeek API的Node.js示例代码见后文。同时，请修改前端代码实现以下功能：当用户点击"Optimize Prompt"按钮时，前端将App.tsx文件第41行的template变量内容通过Node.js后端发送给DeepSeek。发送前，清空UI右侧最下方"Optimized Prompt"下的所有内容。收到DeepSeek回复后，将回复内容显示在"Optimized Prompt"下方。如果DeepSeek长时间未响应，则在"Optimized Prompt"下方显示"DeepSeek没有响应"。下面是调用DeepSeek API的Node.js示例代码：
 ```jsx
 // Please install OpenAI SDK first: `npm install openai`
@@ -27,14 +23,10 @@ async function main() {
 main();
 ```
 
-# prompt 3
+# prompt 2
 
 当后端运行起来后，我在另一个terminal里运行前端，并点击Optimize Prompt，结果发现运行后端的terminal里出现以下错误：
 ```shell
 Error optimizing prompt: AuthenticationError: 401 Authentication Fails, Your api key: ****Key> is invalidat APIError.generate (file:///Users/binwu/OOR-local/katas/book-ai-programming-assistants/nodejs-backend/node_modules/openai/error.mjs:44:20)at OpenAI.makeStatusError (file:///Users/binwu/OOR-local/katas/book-ai-programming-assistants/nodejs-backend/node_modules/openai/core.mjs:295:25)at OpenAI.makeRequest (file:///Users/binwu/OOR-local/katas/book-ai-programming-assistants/nodejs-backend/node_modules/openai/core.mjs:339:30)at process.processTicksAndRejections (node:internal/process/task_queues:95:5)at async file:///Users/binwu/OOR-local/katas/book-ai-programming-assistants/nodejs-backend/server.js:31:24 {status: 401,headers: {'access-control-allow-credentials': 'true',connection: 'keep-alive','content-length': '153','content-type': 'application/json',date: 'Sat, 12 Apr 2025 16:06:34 GMT',server: 'elb','set-cookie': 'HWWAFSESID=fed3b2d70f7c01ed1a2; path=/, HWWAFSESTIME=1744473992231; path=/','strict-transport-security': 'max-age=31536000; includeSubDomains; preload',vary: 'origin, access-control-request-method, access-control-request-headers','x-content-type-options': 'nosniff','x-ds-trace-id': 'e9c356d1653db69bbe2ab1ceab1313c5'},request_id: undefined,error: {message: 'Authentication Fails, Your api key: ****Key> is invalid',type: 'authentication_error',param: null,code: 'invalid_request_error'},code: 'invalid_request_error',param: null,type: 'authentication_error'}
 ```
 我的deepseek api key是“sk-bxxx”。请帮我加到代码里。
-
-# prompt 4
-
-你完成了访问deepseek api优化提示词的需求，很好。但当我准备把这次代码变更进行提交时，运行git status，发现竟然有2000个要提交的文件。我猜里面有很多无须提交到git版本库的文件。请你阅读文件git-st.txt，这个文件包括了我刚运行git add .后所有staged的文件。然后在book-ai-programming-assistants目录下为我编写一个.gitignore文件，以便过滤掉无须提交git版本库的文件。
