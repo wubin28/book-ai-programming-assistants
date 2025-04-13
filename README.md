@@ -22,9 +22,10 @@
     2. ec4a782 - 2025-04-12 23:02:56 feat: added RABPOC in front of the titles of the six input boxes - Bin Wu
     3. [prompt-add-dot-gitignore.md](bolt-cursor-augmentcode/prompts/prompt-add-dot-gitignore.md)
     4. f31a6d4 - 2025-04-13 00:24:00 chore: added .gitignore file to exclude unnecessary files - Bin Wu
-    5. de0c11a - 2025-04-13 00:29:49 feat: added backend for DeepSeek API integration and update frontend - Bin Wu
-    6. f819fc8 - 2025-04-13 00:44:38 docs: added prompts when using augment code - Bin Wu (HEAD -> main, origin/main)
-    7. bf9dc53 - 2025-04-13 10:15:47 docs: added [README.md](README.md) and updated corresponding prompt docs - Bin Wu
+    5. [prompts-add-backend.md](bolt-cursor-augmentcode/prompts/prompts-add-backend.md)
+    6. de0c11a - 2025-04-13 00:29:49 feat: added backend for DeepSeek API integration and update frontend - Bin Wu
+    7. f819fc8 - 2025-04-13 00:44:38 docs: added prompts when using augment code - Bin Wu (HEAD -> main, origin/main)
+    8. bf9dc53 - 2025-04-13 10:15:47 docs: added [README.md](README.md) and updated corresponding prompt docs - Bin Wu
 8. 运行原型
     1. 克隆代码到本地并进入代码根目录
     ```
