@@ -49,3 +49,10 @@
     npm run dev
     ```
     5. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
+
+## 使用bolt创建Promptyoo提示词优化原型
+
+1. 从提交10e7cb4复制bolt.new所生成的前端代码
+2. 使用bolt.new构建并存储用于提示词优化的提示词
+    1. [prompt-build-prompt-for-optimization.md](bolt-cursor-augmentcode/prompts/prompt-build-prompt-for-optimization.md)
+    2. dbf8169 - 2025-04-13 15:09:50 feat: generated the prompt for deepseek according to the default answers of the 6 questions - Bin Wu
