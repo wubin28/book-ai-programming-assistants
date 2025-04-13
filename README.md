@@ -25,4 +25,17 @@
     5. de0c11a - 2025-04-13 00:29:49 feat: added backend for DeepSeek API integration and update frontend - Bin Wu
     6. f819fc8 - 2025-04-13 00:44:38 docs: added prompts when using augment code - Bin Wu (HEAD -> main, origin/main)
     7. bf9dc53 - 2025-04-13 10:15:47 docs: added [README.md](README.md) and updated corresponding prompt docs - Bin Wu
-
+8. 运行原型
+    1. 在一个终端启动后端
+    ```shell
+    cd bolt-cursor-augmentcode/nodejs-backend
+    npm install
+    npm run dev
+    ```
+    2. 在另一个终端启动前端
+    ```shell
+    cd bolt-cursor-augmentcode/react-frontend
+    npm install
+    npm run dev
+    ```
+    3. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
