@@ -29,22 +29,22 @@
     1. 克隆代码到本地并进入代码根目录
     ```
     git clone https://github.com/wubin28/book-ai-programming-assistants.git
-    cd book-ai-programming-assistants
+    cd book-ai-programming-assistants/bolt-cursor-augmentcode
     ```
-    2. 进入后端目录nodejs-backend，创建文件`.env`并提供DeepSeek官方API
+    2. 进入后端目录backend，创建文件`.env`并提供DeepSeek官方API
     ```
     DEEPSEEK_API_KEY=sk-bxxx
     PORT=3001
     ```
     3. 在一个终端启动后端
     ```shell
-    cd nodejs-backend
+    cd backend
     npm install
     npm run dev
     ```
     4. 在另一个终端启动前端
     ```shell
-    cd react-frontend
+    cd frontend
     npm install
     npm run dev
     ```
