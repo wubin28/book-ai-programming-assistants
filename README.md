@@ -26,16 +26,26 @@
     6. f819fc8 - 2025-04-13 00:44:38 docs: added prompts when using augment code - Bin Wu (HEAD -> main, origin/main)
     7. bf9dc53 - 2025-04-13 10:15:47 docs: added [README.md](README.md) and updated corresponding prompt docs - Bin Wu
 8. 运行原型
-    1. 在一个终端启动后端
+    1. 克隆代码到本地并进入代码根目录
+    ```
+    git clone https://github.com/wubin28/book-ai-programming-assistants.git
+    cd book-ai-programming-assistants
+    ```
+    2. 进入后端目录nodejs-backend，创建文件`.env`并提供DeepSeek官方API
+    ```
+    DEEPSEEK_API_KEY=sk-bxxx
+    PORT=3001
+    ```
+    3. 在一个终端启动后端
     ```shell
-    cd bolt-cursor-augmentcode/nodejs-backend
+    cd nodejs-backend
     npm install
     npm run dev
     ```
-    2. 在另一个终端启动前端
+    4. 在另一个终端启动前端
     ```shell
-    cd bolt-cursor-augmentcode/react-frontend
+    cd react-frontend
     npm install
     npm run dev
     ```
-    3. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
+    5. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
