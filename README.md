@@ -86,3 +86,4 @@
     npm run dev
     ```
     5. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
+    6. [prompt-discuss-node-vs-npm-run-dev.md](bolt/prompts/prompt-discuss-node-vs-npm-run-dev.md)]
