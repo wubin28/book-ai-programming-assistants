@@ -14,6 +14,7 @@ function App() {
   const [optimizedPrompt, setOptimizedPrompt] = useState<string>(
     'Your optimized prompt will be displayed here. Optimize your prompt now!'
   );
+  const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = useState<PromptForm>({
     role: 'Prompt Optimization Expert',
     audience: 'AI tool beginners',
@@ -35,7 +36,7 @@ function App() {
     setOptimizedPrompt('Your optimized prompt will be displayed here. Optimize your prompt now!');
   };
 
-  const handleOptimize = () => {
+  const handleOptimize = async () => {
     const formattedPrompt = `As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
 
 What Role you want AI to play? ${form.role}.
@@ -50,7 +51,29 @@ What Output format you want AI to generate? ${form.output}.
 
 What Concern you have about this discussion with AI? ${form.concern}.`;
 
-    setOptimizedPrompt(formattedPrompt);
+    setOptimizedPrompt('Waiting for DeepSeek response...');
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:3000/api/optimize', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: formattedPrompt }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
+      setOptimizedPrompt(data.response);
+    } catch (error) {
+      setOptimizedPrompt('DeepSeek没有响应');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -76,9 +99,8 @@ What Concern you have about this discussion with AI? ${form.concern}.`;
             History
           </h2>
           <div className="space-y-2">
-            {/* Example history items */}
-            {/* <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-900">提示词优化示例</p> */}
-            {/* <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-900">AI写作助手优化</p> */}
+            <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-900">提示词优化示例</p>
+            <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-900">AI写作助手优化</p>
           </div>
         </div>
       </div>
@@ -126,9 +148,12 @@ What Concern you have about this discussion with AI? ${form.concern}.`;
 
               <button
                 onClick={handleOptimize}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-medium hover:bg-blue-700 transition-colors"
+                disabled={isLoading}
+                className={`w-full ${
+                  isLoading ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'
+                } text-white py-3 px-6 rounded-md font-medium transition-colors`}
               >
-                Optimize Prompt
+                {isLoading ? 'Optimizing...' : 'Optimize Prompt'}
               </button>
             </div>
           </div>
