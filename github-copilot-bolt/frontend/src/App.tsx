@@ -31,7 +31,7 @@ function App() {
             <span>History</span>
           </div>
           
-          <nav className="space-y-2">
+            {/* <nav className="space-y-2">
             <a href="#" className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-100 text-gray-700">
               提示词优化要素
               <ChevronRight size={16} />
@@ -40,7 +40,7 @@ function App() {
               免费AI工具推荐
               <ChevronRight size={16} />
             </a>
-          </nav>
+            </nav> */}
         </div>
       </aside>
 
