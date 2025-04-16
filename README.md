@@ -106,7 +106,31 @@
     5. 1ebf7ad - 2025-04-16 19:56:37 refactor: github-copilot-bolt: ran the following commands to prettier the code in all .ts or tsx files: 1) 'npm install --save-dev prettier'; 2) 'npx prettier --write "src/**/*.{ts,tsx}"' - Bin Wu
 6. 使用github copilot构建并存储用于提示词优化的提示词
     1. [prompt-build-prompt-for-optimization.md](github-copilot-bolt/prompts/prompt-build-prompt-for-optimization.md)
-    2. 283c241 - 2025-04-16 21:10:19 feat: github-copilot-bolt: generated the prompt for deepseek according to the default answers of the 6 questions - Bin Wu
+    2. b972dd7 - 2025-04-16 21:10:19 feat: github-copilot-bolt: generated the prompt for deepseek according to the default answers of the 6 questions using Edit mode with Send (not Send with #codebase - Bin Wu
 7. 使用github copilot开发前端可调用的后端接口代码，用于将提示词通过后端传递给DeepSeek官方API进行优化
     1. [prompt-add-backend.md](github-copilot-bolt/prompts/prompt-add-backend.md)
+    2. 058c7f3 - 2025-04-16 21:48:02 feat: github-copilot-bolt: added backend for DeepSeek API integration and updated frontend using Agent mode with Send - Bin Wu
+    3. fa0c0ad - 2025-04-16 21:52:22 fix: fixed the typos in the file names - Bin Wu
 8. 运行原型
+    1. 克隆代码到本地并进入代码根目录
+    ```
+    git clone https://github.com/wubin28/book-ai-programming-assistants.git
+    cd book-ai-programming-assistants/github-copilot-bolt
+    ```
+    2. 进入后端目录backend，创建文件`.env`并提供DeepSeek官方API
+    ```
+    DEEPSEEK_API_KEY=sk-bxxx
+    ```
+    3. 在一个终端启动后端
+    ```shell
+    cd backend
+    npm install
+    node server.js
+    ```
+    4. 在另一个终端启动前端
+    ```shell
+    cd frontend
+    npm install
+    npm run dev
+    ```
+    5. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
