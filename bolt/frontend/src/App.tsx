@@ -99,8 +99,12 @@ What Concern you have about this discussion with AI? ${form.concern}.`;
             History
           </h2>
           <div className="space-y-2">
-            <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-900">提示词优化示例</p>
-            <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-900">AI写作助手优化</p>
+            <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-900">
+              提示词优化示例
+            </p>
+            <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-900">
+              AI写作助手优化
+            </p>
           </div>
         </div>
       </div>
