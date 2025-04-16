@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { PenLine, Clock, ChevronRight } from 'lucide-react';
+import React, { useState } from "react";
+import { PenLine, Clock, ChevronRight } from "lucide-react";
 
 function App() {
   const [formData, setFormData] = useState({
-    role: '',
-    audience: '',
-    boundary: '',
-    purpose: '',
-    output: '',
-    concern: ''
+    role: "",
+    audience: "",
+    boundary: "",
+    purpose: "",
+    output: "",
+    concern: "",
   });
 
   return (
@@ -17,7 +17,9 @@ function App() {
       <aside className="w-64 bg-white border-r border-gray-200 p-6 flex flex-col">
         <div className="mb-8">
           <h1 className="text-2xl font-bold">Chat</h1>
-          <p className="text-sm text-gray-600">Optimize prompts to include RABPOC.</p>
+          <p className="text-sm text-gray-600">
+            Optimize prompts to include RABPOC.
+          </p>
         </div>
 
         <button className="flex items-center justify-center gap-2 bg-black text-white py-2 px-4 rounded-lg mb-8 hover:bg-gray-800 transition-colors">
@@ -30,8 +32,8 @@ function App() {
             <Clock size={18} />
             <span>History</span>
           </div>
-          
-            {/* <nav className="space-y-2">
+
+          {/* <nav className="space-y-2">
             <a href="#" className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-100 text-gray-700">
               提示词优化要素
               <ChevronRight size={16} />
@@ -49,10 +51,11 @@ function App() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-4">Promptyoo</h1>
           <p className="text-gray-600 leading-relaxed">
-            Want high-quality AI responses? I can help you optimize your prompts. Before asking AI a question, 
-            simply provide brief answers to these 6 sub-questions that help generate high-quality prompts. 
-            Then, I'll ask DeepSeek to generate an excellent prompt based on your answers. 
-            You can then copy this prompt to ask AI.
+            Want high-quality AI responses? I can help you optimize your
+            prompts. Before asking AI a question, simply provide brief answers
+            to these 6 sub-questions that help generate high-quality prompts.
+            Then, I'll ask DeepSeek to generate an excellent prompt based on
+            your answers. You can then copy this prompt to ask AI.
           </p>
         </div>
 
@@ -66,7 +69,9 @@ function App() {
               placeholder="e.g., Prompt Optimization Expert"
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               value={formData.role}
-              onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, role: e.target.value })
+              }
             />
           </div>
 
@@ -79,7 +84,9 @@ function App() {
               placeholder="e.g., AI tool beginners"
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               value={formData.audience}
-              onChange={(e) => setFormData({ ...formData, audience: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, audience: e.target.value })
+              }
             />
           </div>
 
@@ -92,7 +99,9 @@ function App() {
               placeholder="e.g., Prompt optimization"
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               value={formData.boundary}
-              onChange={(e) => setFormData({ ...formData, boundary: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, boundary: e.target.value })
+              }
             />
           </div>
 
@@ -105,7 +114,9 @@ function App() {
               placeholder="e.g., find popular prompt optimization tools"
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               value={formData.purpose}
-              onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, purpose: e.target.value })
+              }
             />
           </div>
 
@@ -118,7 +129,9 @@ function App() {
               placeholder="e.g., tool name (official website link)"
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               value={formData.output}
-              onChange={(e) => setFormData({ ...formData, output: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, output: e.target.value })
+              }
             />
           </div>
 
@@ -131,7 +144,9 @@ function App() {
               placeholder="e.g., AI hallucinations (if not found, please be honest and don't make up information)"
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               value={formData.concern}
-              onChange={(e) => setFormData({ ...formData, concern: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, concern: e.target.value })
+              }
             />
           </div>
 
@@ -141,7 +156,10 @@ function App() {
 
           <div className="bg-gray-100 p-6 rounded-lg">
             <h3 className="font-medium mb-2">Optimized Prompt</h3>
-            <p className="text-gray-600">Your optimized prompt will be displayed here. Optimize your prompt now!</p>
+            <p className="text-gray-600">
+              Your optimized prompt will be displayed here. Optimize your prompt
+              now!
+            </p>
           </div>
         </div>
       </main>
