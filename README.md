@@ -63,6 +63,7 @@
     3. [prompt-discuss-api-key-security-in-bolt.md](bolt/prompts/prompt-discuss-api-key-security-in-bolt.md)
     4. [prompt-add-backend.md](bolt/prompts/prompt-add-backend.md)
     5. 1afd331 - 2025-04-13 17:56:27 feat: bolt: added backend for DeepSeek API integration and update frontend - Bin Wu
+    6. 8c361b1 - 2025-04-16 19:58:17 refactor: bolt: ran the following commands to prettier the code in all .ts or tsx files: 1) 'npm install --save-dev prettier'; 2) 'npx prettier --write "src/**/*.{ts,tsx}"' - Bin Wu
 8. 运行原型
     1. 克隆代码到本地并进入代码根目录
     ```
@@ -100,6 +101,10 @@
 5. 基于修改后的描述，使用bolt.new生成Promptyoo前端代码
     1. 最初尝试使用github copilot利用自然语言描述生成前端代码，但运行时发现界面不是左右分屏，而是上下分屏，且时钟图标过大。请它修复了3次，问题照旧，故改为用bolt.new来生成前端代码
     2. aef40e1 - 2025-04-16 17:13:01 feat: github-copilot-bolt: generated the Promptyoo web UI using bolt.new - Bin Wu
+    3. dc124bc - 2025-04-16 17:14:50 docs: based on the modified description, used bolt.new to generate the Promptyoo front-end code - Bin Wu
+    4. ca74a76 - 2025-04-16 19:51:59 fix: github-copilot-bolt: commented out 2 example history items using inline chat - Bin Wu
+    5. 1ebf7ad - 2025-04-16 19:56:37 refactor: github-copilot-bolt: ran the following commands to prettier the code in all .ts or tsx files: 1) 'npm install --save-dev prettier'; 2) 'npx prettier --write "src/**/*.{ts,tsx}"' - Bin Wu
 6. 使用github copilot构建并存储用于提示词优化的提示词
+    1. [prompt-build-prompt-for-optimization.md](github-copilot/prompts/prompt-build-prompt-for-optimization.md)
 7. 使用github copilot开发前端可调用的后端接口代码，用于将提示词通过后端传递给DeepSeek官方API进行优化
 8. 运行原型

@@ -3,13 +3,35 @@ import { PenLine, Clock, ChevronRight } from "lucide-react";
 
 function App() {
   const [formData, setFormData] = useState({
-    role: "",
-    audience: "",
-    boundary: "",
-    purpose: "",
-    output: "",
-    concern: "",
+    role: "Prompt Optimization Expert",
+    audience: "AI tool beginners",
+    boundary: "Prompt optimization",
+    purpose: "find popular prompt optimization tools",
+    output: "tool name (official website link)",
+    concern: "AI hallucinations (if not found, please be honest and don't make up information)",
   });
+
+  const [optimizedPrompt, setOptimizedPrompt] = useState<string>(
+    "Your optimized prompt will be displayed here. Optimize your prompt now!"
+  );
+
+  const handleOptimize = () => {
+    const template = `As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
+
+**What Role you want AI to play? ${formData.role}.**
+
+**What Audience you want AI to generate content for? ${formData.audience}.** 
+
+**What Boundary should AI focus on for this discussion? ${formData.boundary}.**
+
+**What Purpose you want AI to help you achieve? ${formData.purpose}.** 
+
+**What Output format you want AI to generate? ${formData.output}.**
+
+**What Concern you have about this discussion with AI? ${formData.concern}.**`;
+
+    setOptimizedPrompt(template);
+  };
 
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -150,15 +172,17 @@ function App() {
             />
           </div>
 
-          <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+          <button 
+            onClick={handleOptimize}
+            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          >
             Optimize Prompt
           </button>
 
           <div className="bg-gray-100 p-6 rounded-lg">
             <h3 className="font-medium mb-2">Optimized Prompt</h3>
-            <p className="text-gray-600">
-              Your optimized prompt will be displayed here. Optimize your prompt
-              now!
+            <p className="text-gray-600 whitespace-pre-wrap">
+              {optimizedPrompt}
             </p>
           </div>
         </div>
