@@ -88,7 +88,7 @@
     5. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
     6. [prompt-discuss-node-vs-npm-run-dev.md](bolt/prompts/prompt-discuss-node-vs-npm-run-dev.md)]
 
-## 使用github copilot创建Promptyoo提示词优化原型
+## 使用github copilot和bolt创建Promptyoo提示词优化原型
 
 1. 从现有提示词优化工具界面（promptperfect-optimizer、chatgpt-prompt-optimizer）中提取可用的用户界面元素
 2. 将提取的界面元素组合成Promptyoo原型界面（PPT）
@@ -96,7 +96,10 @@
     1. [prompt-stitch-ui-prototype.md](github-copilot/prompts/prompt-stitch-ui-prototype.md)
     2. 267b6bc - 2025-04-15 22:19:23 feat: github copilot: used github copilot to generate UI interface description based on stitched UI prototype diagram, so as to generate web UI with github copilot in the future - Bin Wu
 4. 将自然语言描述调整为符合Promptyoo原型界面需求
-5. 基于修改后的描述，使用github copilot生成Promptyoo前端代码
+    1. 80a28cd - 2025-04-16 16:40:01 feat: Adapted natural language descriptions to meet Promptyoo prototype interface requirements - Bin Wu
+5. 基于修改后的描述，使用bolt.new生成Promptyoo前端代码
+    1. 最初尝试使用github copilot利用自然语言描述生成前端代码，但运行时发现界面不是左右分屏，而是上下分屏，且时钟图标过大。请它修复了3次，问题照旧，故改为用bolt.new来生成前端代码
+    2. aef40e1 - 2025-04-16 17:13:01 feat: github-copilot-bolt: generated the Promptyoo web UI using bolt.new - Bin Wu
 6. 使用github copilot构建并存储用于提示词优化的提示词
 7. 使用github copilot开发前端可调用的后端接口代码，用于将提示词通过后端传递给DeepSeek官方API进行优化
 8. 运行原型
