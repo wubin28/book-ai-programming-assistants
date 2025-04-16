@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { PenLine, Clock, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { PenLine, Clock } from "lucide-react";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -11,11 +11,11 @@ function App() {
     concern: "AI hallucinations (if not found, please be honest and don't make up information)",
   });
 
-  const [optimizedPrompt, setOptimizedPrompt] = useState<string>(
-    "Your optimized prompt will be displayed here. Optimize your prompt now!"
-  );
+  const [optimizedPrompt, setOptimizedPrompt] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
-  const handleOptimize = () => {
+  const handleOptimize = async () => {
     const template = `As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
 
 **What Role you want AI to play? ${formData.role}.**
@@ -30,7 +30,37 @@ function App() {
 
 **What Concern you have about this discussion with AI? ${formData.concern}.**`;
 
-    setOptimizedPrompt(template);
+    setOptimizedPrompt("");
+    setError("");
+    setIsLoading(true);
+
+    try {
+      const timeoutId = setTimeout(() => {
+        setError("DeepSeek没有响应");
+        setIsLoading(false);
+      }, 30000);
+
+      const response = await fetch('http://localhost:3000/api/optimize', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: template }),
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error('Failed to optimize prompt');
+      }
+
+      const data = await response.json();
+      setOptimizedPrompt(data.result);
+    } catch (err) {
+      setError("Failed to get response from DeepSeek");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -174,16 +204,21 @@ function App() {
 
           <button 
             onClick={handleOptimize}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:bg-blue-400"
+            disabled={isLoading}
           >
-            Optimize Prompt
+            {isLoading ? "Optimizing..." : "Optimize Prompt"}
           </button>
 
           <div className="bg-gray-100 p-6 rounded-lg">
             <h3 className="font-medium mb-2">Optimized Prompt</h3>
-            <p className="text-gray-600 whitespace-pre-wrap">
-              {optimizedPrompt}
-            </p>
+            {error ? (
+              <p className="text-red-600">{error}</p>
+            ) : (
+              <p className="text-gray-600 whitespace-pre-wrap">
+                {optimizedPrompt || "Your optimized prompt will appear here"}
+              </p>
+            )}
           </div>
         </div>
       </main>

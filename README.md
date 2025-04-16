@@ -94,7 +94,7 @@
 1. 从现有提示词优化工具界面（promptperfect-optimizer、chatgpt-prompt-optimizer）中提取可用的用户界面元素
 2. 将提取的界面元素组合成Promptyoo原型界面（PPT）
 3. 使用github copilot生成界面的自然语言描述
-    1. [prompt-stitch-ui-prototype.md](github-copilot/prompts/prompt-stitch-ui-prototype.md)
+    1. [prompt-stitch-ui-prototype.md](github-copilot-bolt/prompts/prompt-stitch-ui-prototype.md)
     2. 267b6bc - 2025-04-15 22:19:23 feat: github copilot: used github copilot to generate UI interface description based on stitched UI prototype diagram, so as to generate web UI with github copilot in the future - Bin Wu
 4. 将自然语言描述调整为符合Promptyoo原型界面需求
     1. 80a28cd - 2025-04-16 16:40:01 feat: Adapted natural language descriptions to meet Promptyoo prototype interface requirements - Bin Wu
@@ -105,6 +105,8 @@
     4. ca74a76 - 2025-04-16 19:51:59 fix: github-copilot-bolt: commented out 2 example history items using inline chat - Bin Wu
     5. 1ebf7ad - 2025-04-16 19:56:37 refactor: github-copilot-bolt: ran the following commands to prettier the code in all .ts or tsx files: 1) 'npm install --save-dev prettier'; 2) 'npx prettier --write "src/**/*.{ts,tsx}"' - Bin Wu
 6. 使用github copilot构建并存储用于提示词优化的提示词
-    1. [prompt-build-prompt-for-optimization.md](github-copilot/prompts/prompt-build-prompt-for-optimization.md)
+    1. [prompt-build-prompt-for-optimization.md](github-copilot-bolt/prompts/prompt-build-prompt-for-optimization.md)
+    2. 283c241 - 2025-04-16 21:10:19 feat: github-copilot-bolt: generated the prompt for deepseek according to the default answers of the 6 questions - Bin Wu
 7. 使用github copilot开发前端可调用的后端接口代码，用于将提示词通过后端传递给DeepSeek官方API进行优化
+    1. [prompt-add-backend.md](github-copilot-bolt/prompts/prompt-add-backend.md)
 8. 运行原型
