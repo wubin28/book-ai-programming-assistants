@@ -1,6 +1,6 @@
 # Prompt
 
-你作为web UI专家，请以2025年最流行的web开发前端框架和相关技术栈的最佳实践，按照下面的描述生成一个AI提示词优化的web app的UI界面，并把代码保存在github-copilot/frontend目录下（不要受其他目录下的frontend下的代码的影响）：
+你作为web UI专家，请以2025年最流行的web开发前端框架和相关技术栈的最佳实践，按照下面的描述生成一个AI提示词优化的web app的UI界面：
 
 ### Overall Layout
 The interface follows a two-column layout:
