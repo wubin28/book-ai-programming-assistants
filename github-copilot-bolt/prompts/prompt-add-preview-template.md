@@ -1,0 +1,1 @@
+如何实现以下前端功能：在"Optimize Prompt"按钮与“C: What Concern you have about this discussion with AI?”输入框之间，添加一个显示框（样式类似于按钮下方的"Optimized Prompt"区域，但文字使用斜体且为灰色），用于显示App.tsx文件第19行template变量的内容，让用户能预览即将发送给deepseek的提示词。
