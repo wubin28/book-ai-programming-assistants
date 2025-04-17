@@ -134,3 +134,6 @@
     npm run dev
     ```
     5. 用浏览器访问前端所给出的local网页地址`http://localhost:5173/`
+9. 增加preview template
+    1. [prompt-add-preview-template](github-copilot-bolt/prompts/prompt-add-preview-template.md)
+    2. 17668b3 - 2025-04-17 11:43:59 feat: github-copilot-bolt: added preview template before submitting the prompt to deepseek - Bin Wu
