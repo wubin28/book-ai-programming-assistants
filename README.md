@@ -99,7 +99,7 @@
 4. 将自然语言描述调整为符合Promptyoo原型界面需求
     1. 80a28cd - 2025-04-16 16:40:01 feat: Adapted natural language descriptions to meet Promptyoo prototype interface requirements - Bin Wu
 5. 基于修改后的描述，使用bolt.new生成Promptyoo前端代码
-    1. 最初尝试使用github copilot利用自然语言描述在Agent模式下生成前端代码，但运行时发现界面不是左右分屏，而是上下分屏，且时钟图标过大。请它修复了3次，问题照旧，故改为用bolt.new来生成前端代码
+    1. 最初尝试使用github copilot利用自然语言描述在Agent模式下生成前端代码，但运行时发现界面不是左右分屏，而是上下分屏，且时钟图标过大。请它修复了3次，问题照旧；又用Ask模式（Send and Dispatch）生成前端代码，但运行时报错；故改为用bolt.new来生成前端代码
     2. aef40e1 - 2025-04-16 17:13:01 feat: github-copilot-bolt: generated the Promptyoo web UI using bolt.new - Bin Wu
     3. dc124bc - 2025-04-16 17:14:50 docs: based on the modified description, used bolt.new to generate the Promptyoo front-end code - Bin Wu
     4. ca74a76 - 2025-04-16 19:51:59 fix: github-copilot-bolt: commented out 2 example history items using inline chat - Bin Wu
