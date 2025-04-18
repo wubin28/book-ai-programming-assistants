@@ -17,7 +17,7 @@ function App() {
   const [error, setError] = useState<string>("");
 
   const handleOptimize = async () => {
-    const template = `As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
+    const promptTemplate = `As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
 
 **What Role you want AI to play? ${formData.role}.**
 
@@ -46,7 +46,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: template }),
+        body: JSON.stringify({ prompt: promptTemplate }),
       });
 
       clearTimeout(timeoutId);
