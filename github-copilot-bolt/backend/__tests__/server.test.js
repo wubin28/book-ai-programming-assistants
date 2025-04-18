@@ -1,6 +1,6 @@
 import { jest, describe, test, expect, beforeEach, afterEach } from '@jest/globals';
 import request from 'supertest';
-import { createApp } from '../server-test.js';
+import { createApp } from '../createApp.js';
 
 describe('API Endpoints', () => {
   let app;
