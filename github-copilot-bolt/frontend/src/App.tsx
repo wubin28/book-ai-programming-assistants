@@ -1,3 +1,45 @@
+/**
+ * The `App` component provides a user interface for optimizing AI prompts
+ * based on user-provided inputs. It allows users to fill out a form with
+ * specific details (role, audience, boundary, purpose, output, and concern)
+ * and generates a high-quality prompt using the DeepSeek API.
+ *
+ * @component
+ *
+ * @example
+ * ```tsx
+ * <App />
+ * ```
+ *
+ * @remarks
+ * - The component uses React's `useState` hook to manage form data, the optimized prompt,
+ *   loading state, and error messages.
+ * - It includes a sidebar for navigation and a main content area for the form and results.
+ * - The prompt optimization process is triggered by the "Optimize Prompt" button, which
+ *   sends a POST request to the DeepSeek API.
+ *
+ * @returns {JSX.Element} The rendered `App` component.
+ *
+ * @state {Object} formData - Stores the user's input for the 6 sub-questions.
+ * @state {string} optimizedPrompt - Stores the optimized prompt returned by the API.
+ * @state {boolean} isLoading - Indicates whether the optimization process is in progress.
+ * @state {string} error - Stores any error messages encountered during the API request.
+ *
+ * @function handleOptimize
+ * Sends a POST request to the DeepSeek API with the generated prompt template.
+ * - Displays a loading state while waiting for the response.
+ * - Handles errors and updates the UI accordingly.
+ *
+ * @UI
+ * - Sidebar: Contains a title, description, and navigation options.
+ * - Main Content: Includes the form for user input, a preview of the generated prompt template,
+ *   and the optimized prompt result.
+ *
+ * @dependencies
+ * - `useState` from React for state management.
+ * - `fetch` for making API requests.
+ * - `lucide-react` for icons used in the UI.
+ */
 import { useState } from "react";
 import { PenLine, Clock } from "lucide-react";
 
