@@ -137,3 +137,12 @@
 9. 增加preview template
     1. [prompt-add-preview-template](github-copilot-bolt/prompts/prompt-add-preview-template.md)
     2. 17668b3 - 2025-04-17 11:43:59 feat: github-copilot-bolt: added preview template before submitting the prompt to deepseek - Bin Wu
+    3. 4b7e40e - 2025-04-17 11:50:17 docs: github-copilot: added preview template before submitting the prompt to deepseek - Bin Wu
+    4. d1dbebd - 2025-04-18 08:32:04 refactor: github-copilot-bolt: renamed variable name for prompt template in handleOptimize function using Rename Symbols smart action - Bin Wu
+    5. 37b52f5 - 2025-04-18 08:40:27 docs: github-copilot-bolt: App component: generated documentation to enhance clarity and detail using Generate Documentation Smart Action - Bin Wu
+    Added unit tests for the frontend using github copilot
+    6. 600dafe - 2025-04-18 10:25:53 test: github-copilot-bolt: frontend: added unit tests for App component and configure testing environment using '/setupTests' and '/fix' - Bin Wu
+    Tried to add unit tests for the backend using github copilot (tried to run '@workspace /fix #terminalLastCommand #testFailure' several times) but always got errors.
+    Then asked help from Claude 3.7 sonnet Desktop and fixed the errors.
+    7. 550095a - 2025-04-18 12:40:12 test: github-copilot-bolt: backend: added unit tests with dependency injection - Bin Wu
+    8. a79eb74 - 2025-04-18 15:17:57 test: github-copilot-bolt: backend: added unit tests with dependency injection (implemented by github copilot based on suggestions from claude 3.7 sonnet desktop) - Bin Wu
