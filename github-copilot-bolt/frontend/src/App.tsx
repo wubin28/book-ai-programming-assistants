@@ -78,6 +78,7 @@ function App() {
     setIsLoading(true);
 
     try {
+      console.log('Starting optimization request...');
       const timeoutId = setTimeout(() => {
         setError("DeepSeek没有响应");
         setIsLoading(false);
@@ -92,15 +93,58 @@ function App() {
       });
 
       clearTimeout(timeoutId);
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers));
 
       if (!response.ok) {
-        throw new Error("Failed to optimize prompt");
+        const errorBody = await response.text();
+        console.error('Error response body:', errorBody);
+        throw new Error(`Server error: ${response.status} - ${errorBody}`);
       }
 
-      const data = await response.json();
-      setOptimizedPrompt(data.result);
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+
+      if (!reader) {
+        throw new Error("Failed to read response");
+      }
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) {
+          console.log('Stream complete');
+          break;
+        }
+
+        const chunk = decoder.decode(value);
+        console.log('Received chunk:', chunk);
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            try {
+              const jsonStr = line.slice(6);
+              console.log('Parsing JSON:', jsonStr);
+              const data = JSON.parse(jsonStr);
+              setOptimizedPrompt(prev => prev + data.content);
+            } catch (e) {
+              console.error('Error parsing SSE data:', {
+                error: e,
+                line: line,
+                slice: line.slice(6)
+              });
+            }
+          }
+        }
+      }
     } catch (err) {
-      setError("Failed to get response from DeepSeek");
+      console.error('Frontend Error:', {
+        name: err.name,
+        message: err.message,
+        stack: err.stack,
+        raw: err
+      });
+      setError(`Failed to get response from DeepSeek: ${err.message}`);
     } finally {
       setIsLoading(false);
     }
