@@ -97,7 +97,8 @@
     1. [prompt-stitch-ui-prototype.md](github-copilot-bolt/prompts/prompt-stitch-ui-prototype.md)
     2. 267b6bc - 2025-04-15 22:19:23 feat: github copilot: used github copilot to generate UI interface description based on stitched UI prototype diagram, so as to generate web UI with github copilot in the future - Bin Wu
 4. 将自然语言描述调整为符合Promptyoo原型界面需求
-    1. 80a28cd - 2025-04-16 16:40:01 feat: Adapted natural language descriptions to meet Promptyoo prototype interface requirements - Bin Wu
+    1. [prompt-generate-web-ui-by-github-copilot.md](github-copilot-bolt/prompts/prompt-generate-web-ui-by-github-copilot.md)
+    2. 80a28cd - 2025-04-16 16:40:01 feat: Adapted natural language descriptions to meet Promptyoo prototype interface requirements - Bin Wu
 5. 基于修改后的描述，使用bolt.new生成Promptyoo前端代码
     1. 最初尝试使用github copilot利用自然语言描述在Agent模式下生成前端代码，但运行时发现界面不是左右分屏，而是上下分屏，且时钟图标过大。请它修复了3次，问题照旧；在Ask模式下用`/new`创建新的前端项目，运行时报“Build Error. Failed to compile. Next.js (14.2.28) is outdated (learn more)”错误；又用Ask模式（Send and Dispatch）生成前端代码，但运行时报错；故改为用bolt.new来生成前端代码
     2. aef40e1 - 2025-04-16 17:13:01 feat: github-copilot-bolt: generated the Promptyoo web UI using bolt.new - Bin Wu
