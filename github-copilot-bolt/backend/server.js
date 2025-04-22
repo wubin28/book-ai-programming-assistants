@@ -11,11 +11,11 @@ const openai = new OpenAI({
   apiKey: process.env.DEEPSEEK_API_KEY
 });
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = createApp(openai);
 
 const server = app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
-export { app, server };
+export { server };
