@@ -80,7 +80,7 @@ function App() {
     try {
       console.log('Starting optimization request...');
       const timeoutId = setTimeout(() => {
-        setError("DeepSeek没有响应");
+        setError("DeepSeek is not responding");
         setIsLoading(false);
       }, 30000);
 
@@ -204,6 +204,7 @@ function App() {
               R: What role you want AI to play?
             </label>
             <input
+              data-testid="role-input"
               type="text"
               placeholder="e.g., Prompt Optimization Expert"
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -292,7 +293,10 @@ function App() {
           {/* Add preview section */}
           <div className="bg-gray-100 p-6 rounded-lg">
             <h3 className="font-medium mb-2">Preview Template</h3>
-            <p className="text-gray-500 italic whitespace-pre-wrap">
+            <p 
+              data-testid="preview-template"
+              className="text-gray-500 italic whitespace-pre-wrap"
+            >
               {`As a prompt engineering expert, please generate an English prompt based on the answers to the 6 questions below, targeting AI beginners. The prompt must incorporate the content from all 6 answers to help formulate high-quality questions for AI. Please provide only the prompt itself, without any additional content.
 
 **What Role you want AI to play? ${formData.role}.**
@@ -310,6 +314,7 @@ function App() {
           </div>
 
           <button
+            data-testid="optimize-button"
             onClick={handleOptimize}
             className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:bg-blue-400"
             disabled={isLoading}
@@ -320,9 +325,14 @@ function App() {
           <div className="bg-gray-100 p-6 rounded-lg">
             <h3 className="font-medium mb-2">Optimized Prompt</h3>
             {error ? (
-              <p className="text-red-600">{error}</p>
+              <p data-testid="error-message" className="text-red-600">
+                {error}
+              </p>
             ) : (
-              <p className="text-gray-600 whitespace-pre-wrap">
+              <p 
+                data-testid="optimized-prompt" 
+                className="text-gray-600 whitespace-pre-wrap"
+              >
                 {optimizedPrompt || "Your optimized prompt will appear here"}
               </p>
             )}
