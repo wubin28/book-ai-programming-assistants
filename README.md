@@ -142,9 +142,9 @@
     4. d1dbebd - 2025-04-18 08:32:04 refactor: github-copilot-bolt: renamed variable name for prompt template in handleOptimize function using Rename Symbols smart action - Bin Wu
     5. 37b52f5 - 2025-04-18 08:40:27 docs: github-copilot-bolt: App component: generated documentation to enhance clarity and detail using Generate Documentation Smart Action - Bin Wu
 10. 依次为前后端编写单元测试
-    Added unit tests for the frontend using github copilot
-    1. 600dafe - 2025-04-18 10:25:53 test: github-copilot-bolt: frontend: added unit tests for App component and configure testing environment using '/setupTests' and '/fix' - Bin Wu
-    Tried to add unit tests for the backend using github copilot (tried to run '@workspace /fix #terminalLastCommand #testFailure' several times) but always got errors.
-    Then asked help from Claude 3.7 sonnet Desktop and fixed the errors.
-    2. 550095a - 2025-04-18 12:40:12 test: github-copilot-bolt: backend: added unit tests with dependency injection - Bin Wu
-    3. a79eb74 - 2025-04-18 15:17:57 test: github-copilot-bolt: backend: added unit tests with dependency injection (implemented by github copilot based on suggestions from claude 3.7 sonnet desktop) - Bin Wu
+    1. Added unit tests for the frontend using github copilot
+    2. 600dafe - 2025-04-18 10:25:53 test: github-copilot-bolt: frontend: added unit tests for App component and configure testing environment using '/setupTests' and '/fix' - Bin Wu
+    3. Tried to add unit tests for the backend using github copilot (tried to run '@workspace /fix #terminalLastCommand #testFailure' several times) but always got errors.
+    4. Then asked help from Claude 3.7 sonnet Desktop and fixed the errors.
+    5. 550095a - 2025-04-18 12:40:12 test: github-copilot-bolt: backend: added unit tests with dependency injection - Bin Wu
+    6. a79eb74 - 2025-04-18 15:17:57 test: github-copilot-bolt: backend: added unit tests with dependency injection (implemented by github copilot based on suggestions from claude 3.7 sonnet desktop) - Bin Wu
