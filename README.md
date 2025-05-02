@@ -1,4 +1,4 @@
-# 《AI编程助手》配套代码
+# 《AI编程助手》创作实验代码
 
 ## 使用bolt-cursor-augmentcode创建Promptyoo提示词优化原型
 
